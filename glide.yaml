@@ -1,0 +1,122 @@
+package: .
+import:
+- package: 9fans.net/go
+  subpackages:
+  - acme
+- package: github.com/Masterminds/vcs
+  version: ~1.11.0
+- package: github.com/aryann/difflib
+- package: github.com/davecgh/go-spew
+  version: ~1.1.0
+  subpackages:
+  - spew
+- package: github.com/golang/geo
+  subpackages:
+  - r3
+- package: github.com/golang/glog
+- package: github.com/golang/protobuf
+  subpackages:
+  - proto
+  - ptypes
+  - ptypes/duration
+  - ptypes/empty
+  - ptypes/struct
+  - ptypes/timestamp
+  - ptypes/wrappers
+- package: github.com/google/shlex
+- package: github.com/googleapis/gax-go
+- package: github.com/pmezard/go-difflib
+  version: ~1.0.0
+  subpackages:
+  - difflib
+- package: github.com/stretchr/objx
+- package: github.com/tucnak/climax
+- package: go4.org
+  subpackages:
+  - syncutil/singleflight
+- package: golang.org/x/crypto
+  subpackages:
+  - acme/autocert
+  - ssh/terminal
+- package: golang.org/x/debug
+  subpackages:
+  - local
+- package: golang.org/x/sync
+  subpackages:
+  - semaphore
+- package: golang.org/x/text
+  subpackages:
+  - encoding
+  - encoding/charmap
+  - encoding/htmlindex
+  - language
+  - secure/bidirule
+  - transform
+  - unicode/norm
+- package: golang.org/x/time
+  subpackages:
+  - rate
+- package: google.golang.org/api
+  subpackages:
+  - bigquery/v2
+  - clouddebugger/v2
+  - cloudtrace/v1
+  - compute/v1
+  - container/v1
+  - gensupport
+  - googleapi
+  - iterator
+  - option
+  - storage/v1
+  - support/bundler
+  - transport
+- package: google.golang.org/appengine
+  version: ~1.0.0
+  subpackages:
+  - datastore
+  - log
+  - memcache
+  - urlfetch
+  - user
+- package: google.golang.org/genproto
+  subpackages:
+  - googleapis/api/label
+  - googleapis/api/metric
+  - googleapis/api/monitoredres
+  - googleapis/bigtable/admin/v2
+  - googleapis/bigtable/v2
+  - googleapis/cloud/audit
+  - googleapis/cloud/language/v1
+  - googleapis/cloud/language/v1beta2
+  - googleapis/cloud/speech/v1
+  - googleapis/cloud/speech/v1beta1
+  - googleapis/cloud/vision/v1
+  - googleapis/datastore/v1
+  - googleapis/devtools/clouddebugger/v2
+  - googleapis/devtools/clouderrorreporting/v1beta1
+  - googleapis/devtools/cloudtrace/v1
+  - googleapis/iam/admin/v1
+  - googleapis/iam/v1
+  - googleapis/logging/type
+  - googleapis/logging/v2
+  - googleapis/longrunning
+  - googleapis/monitoring/v3
+  - googleapis/pubsub/v1
+  - googleapis/rpc/errdetails
+  - googleapis/rpc/status
+  - googleapis/spanner/admin/database/v1
+  - googleapis/spanner/admin/instance/v1
+  - googleapis/spanner/v1
+  - googleapis/type/color
+  - googleapis/type/latlng
+- package: google.golang.org/grpc
+  version: ~1.2.1
+  subpackages:
+  - codes
+  - credentials
+  - metadata
+- package: gopkg.in/alecthomas/kingpin.v3-unstable
+  version: ~2.2.3
+- package: sourcegraph.com/sqs/goreturns
+  subpackages:
+  - returns

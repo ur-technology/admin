@@ -1,0 +1,5 @@
+$FIREBASE_PROJECT ?= ur-money-paul
+
+database
+    endpoint            = "https://${FIREBASE_PROJECT}.firebaseio.com"
+    service_credentials = "config/firebase/serviceAccountCredentials.${FIREBASE_PROJECT}.json" 
