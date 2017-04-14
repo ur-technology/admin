@@ -2,7 +2,15 @@ package main
 
 import (
 	"fmt"
+	"log"
+	"net/http"
+	"os"
 	"ur/database"
+	"ur/user"
+
+	"goji.io/pat"
+
+	goji "goji.io"
 
 	"github.com/yourheropaul/inj"
 )
@@ -11,6 +19,8 @@ type application struct {
 	Environment            environmentMap          `inj:""`
 	Config                 configurer              `inj:""`
 	DatabaseSessionFactory database.SessionFactory `inj:""`
+	ModelModelFactory      user.ModelFactory       `inj:""`
+	Mux                    *goji.Mux               `inj:""`
 }
 
 var setupProcedures = []struct {
@@ -22,6 +32,9 @@ var setupProcedures = []struct {
 	{"Set up application", setupApplication},
 	{"Load config", loadConfig},
 	{"Setup database", setupDatabase},
+	{"Setup user model factory", setupUserModelFactory},
+	{"Create HTTP multiplexer", setupMux},
+	{"Setup user API", setupUserAPI},
 	{"Assert dependency graph", assertDependencyGraph},
 }
 
@@ -62,6 +75,27 @@ func setupDatabase(grapher inj.Grapher, cfg configurer, reporter errorReporter) 
 	grapher.Provide(sf)
 }
 
+func setupUserModelFactory(grapher inj.Grapher, sf database.SessionFactory, reporter errorReporter) {
+	grapher.Provide(user.NewDatabaseModelFactory(sf))
+}
+
+func setupMux(grapher inj.Grapher) {
+	grapher.Provide(goji.NewMux())
+}
+
+func setupUserAPI(grapher inj.Grapher, uf user.ModelFactory, mux *goji.Mux, reporter errorReporter) {
+
+	userMux := goji.SubMux()
+
+	api := user.NewAPIV1(userMux, uf)
+
+	if err := api.Register(); err != nil {
+		reporter.fatal("Couldn't register user API: %s", err)
+	}
+
+	mux.Handle(pat.New("/api/v1/user/*"), userMux)
+}
+
 func assertDependencyGraph(grapher inj.Grapher, reporter errorReporter) {
 
 	if ok, errs := grapher.Assert(); !ok {
@@ -81,4 +115,20 @@ func main() {
 		grapher.Inject(procedure.fn, grapher)
 		fmt.Println("OK")
 	}
+
+	grapher.Inject(serve)
+
+	select {}
+}
+
+func serve(mux *goji.Mux) {
+
+	port := os.Getenv("PORT")
+
+	if port == "" {
+		port = "5000"
+	}
+
+	fmt.Printf("Running server on port %s...\n", port)
+	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%s", port), mux))
 }

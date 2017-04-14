@@ -3,6 +3,7 @@ package database
 import (
 	"fmt"
 	"strings"
+	"ur/errors"
 
 	"github.com/zabawaba99/firego"
 )
@@ -111,7 +112,7 @@ func (f *firebaseSession) query(store string, query Query, params ...RetrievalPa
 			sid, ok := v.Value.(string)
 
 			if !ok {
-				return nil, fmt.Errorf("ID values must be strings")
+				return nil, errors.NewInternal("ID values must be strings")
 			}
 
 			ref = ref.OrderBy("$key").EqualTo(sid)
@@ -126,7 +127,7 @@ func (f *firebaseSession) query(store string, query Query, params ...RetrievalPa
 			ref = ref.EqualToValue(v.Value)
 
 		default:
-			return nil, fmt.Errorf("Operator %d not supported", v.Operator)
+			return nil, errors.NewInternal("Operator %d not supported", v.Operator)
 		}
 	}
 

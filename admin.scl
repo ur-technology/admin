@@ -1,4 +1,4 @@
-$FIREBASE_PROJECT ?= ur-money-paul
+$FIREBASE_PROJECT ?= ur-money-staging
 
 database
     endpoint            = "https://${FIREBASE_PROJECT}.firebaseio.com"
