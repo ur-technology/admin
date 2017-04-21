@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+  ur-backend:
+    container_name: "ur-backend"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    volumes:
+     - ".:/mnt/ur"
+    environment:
+      - "GOPATH=/mnt/ur"
+      - "PORT=5000"
+    entrypoint: "make run-admin"

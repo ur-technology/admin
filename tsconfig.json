@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "allowSyntheticDefaultImports": true,
+        "declaration": false,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "sourceMap": false,
+        "module": "commonjs",
+        "target": "ES5",
+        "outDir": "dist",
+        "rootDir": "ts",
+        "types": [
+            "angular"
+        ]
+    },
+    "include": [
+        "ts/**/*.ts"
+    ],
+    "exclude": [
+    ],
+    "compileOnSave": false
+}

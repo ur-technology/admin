@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"ur/file"
 
 	"github.com/hashicorp/hcl"
 	"github.com/homemade/scl"
@@ -20,11 +21,11 @@ type config struct {
 	DatabaseConfig databaseConfig `hcl:"database"`
 }
 
-func newConfig(path string, variables ...environmentMap) (configurer, error) {
+func newConfig(fs file.SystemReader, path string, variables ...environmentMap) (configurer, error) {
 
 	c := &config{}
 
-	p, err := scl.NewParser(scl.NewDiskSystem())
+	p, err := scl.NewParser(fs)
 
 	if err != nil {
 		return nil, err

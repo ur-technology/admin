@@ -1,0 +1,25 @@
+= doctype html
+html lang=en
+  head
+    meta charset=utf-8
+    meta name="viewport" content="width=device-width, initial-scale=1"
+    link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css"
+    title UR Admin
+  body 
+    #wrapper data-ng-app="AdminApp" data-ng-controller="DefaultCtrl" ng-cloak=""
+      section layout="row" flex=""
+        md-content flex="" layout-padding=""
+          p Lorem ipsum dolor sit amet, ne quod novum mei. Sea omnium invenire mediocrem at, in lobortis conclusionemque nam. Ne deleniti appetere reprimique pro, inani labitur disputationi te sed. At vix sale omnesque, id pro labitur reformidans accommodare, cum labores honestatis eu. Nec quem lucilius in, eam praesent reformidans no. Sed laudem aliquam ne.
+        md-content
+          section layout="row" layout-sm="column" layout-align="center center" layout-wrap=""
+            md-button md-no-ink="" class="md-primary md-raised" Primary
+
+    script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"
+    script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"
+    script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"
+    script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"
+    script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-resource.min.js"
+    script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.min.js"
+    script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"
+    script src="/assets/js/admin.js"
+

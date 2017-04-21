@@ -22,3 +22,6 @@
 /src/github.com/alecthomas/gometalinter
 /src/cloud.google.com/go
 /src/goji.io
+/vendor
+node_modules
+/src/github.com
